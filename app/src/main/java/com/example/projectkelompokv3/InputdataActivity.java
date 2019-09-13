@@ -6,14 +6,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class InputdataActivity extends AppCompatActivity {
     EditText edtnomor,edtnama,edttanggal,edtjenkel,edtalamat;
-    ImageButton btnsubmit;
-    TextView simpan;
+    Button btnsubmit;
     Context context;
     Data data;
     Integer nomor;
@@ -39,11 +39,10 @@ public class InputdataActivity extends AppCompatActivity {
         edttanggal = findViewById(R.id.edttanggal);
         edtjenkel = findViewById(R.id.edtjenkel);
         edtalamat = findViewById(R.id.edtalamat);
-        simpan = findViewById(R.id.simpan);
 
         btnsubmit = findViewById(R.id.btnsubmit);
     if (aksi.equals("Update")){
-        simpan.setText("Update");
+        btnsubmit.setText("Update");
         edtnomor.setText(nomor);
         edtnomor.setFocusable(false);
         edtnama.setText(data.getNama());
@@ -56,7 +55,7 @@ public class InputdataActivity extends AppCompatActivity {
         public void onClick(View view) {
             DatabaseHelper db = new DatabaseHelper(context);
             Data data = new Data();
-            String label = String.valueOf(simpan.getText());
+            String label = btnsubmit.getText().toString();
             if (label.equals("SIMPAN")){
                 data.setNo(Integer.parseInt(edtnomor.getText().toString()));
                 data.setNama(edtnama.getText().toString());

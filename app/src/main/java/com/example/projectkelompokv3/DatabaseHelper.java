@@ -26,7 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createUserTable="Create Table "+TABLE_NAME+"("+KEY_NOMOR+" INTEGER PRIMARY KEY,"+KEY_NAME+" STRING, "+KEY_TANGGAL+" STRING,"+KEY_JENKEL+" STRING,"+KEY_ALAMAT+" STRING"+")";
+        String createUserTable="Create Table "+TABLE_NAME+"("+KEY_NOMOR+" INTEGER PRIMARY KEY,"+KEY_NAME+" TEXT, "+KEY_TANGGAL+" TEXT,"+KEY_JENKEL+" TEXT,"+KEY_ALAMAT+" TEXT"+")";
         db.execSQL(createUserTable);
     }
 
@@ -46,11 +46,11 @@ public class DatabaseHelper extends SQLiteOpenHelper
         Cursor c = db.query(TABLE_NAME,columns,null,null,null,null,null);
 
         while(c.moveToNext()){
-            String name = c.getString(0);
-            int nomor = c.getInt(1);
-            String tgl = c.getString(0);
-            String jenkel = c.getString(0);
-            String alamat = c.getString(0);
+            String name = c.getString(1);
+            int nomor = c.getInt(0);
+            String tgl = c.getString(2);
+            String jenkel = c.getString(3);
+            String alamat = c.getString(4);
 
             Data personBean=new Data();
             personBean.setNo(nomor);

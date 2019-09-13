@@ -158,15 +158,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnsubmit"
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:background="@drawable/ic_save_black_24dp" />
-        <TextView
-            android:id="@+id/simpan"
+        <Button
+            android:id="@+id/btnsubmit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#fff"
             android:text="SIMPAN"
             android:textSize="18sp"
             android:textColor="#FF0000"
