@@ -15,7 +15,7 @@ public class InputdataActivity extends AppCompatActivity {
     EditText edtnomor,edtnama,edttanggal,edtjenkel,edtalamat;
     Button btnsubmit;
     Context context;
-    Data data;
+    Data updated;
     Integer nomor;
     String aksi = "Submit";
 
@@ -27,11 +27,11 @@ public class InputdataActivity extends AppCompatActivity {
         context = this;
 
         aksi = getIntent().getStringExtra("UPDATE");
-        data = getIntent().getParcelableExtra("UPDATE_INTENT");
+        updated = getIntent().getParcelableExtra("UPDATE_INTENT");
         if(aksi == null){
             aksi = "Submit";
         }else{
-            nomor = data.getNo();
+            nomor = updated.getNo();
         }
 
         edtnomor = findViewById(R.id.edtnomor);
@@ -45,10 +45,10 @@ public class InputdataActivity extends AppCompatActivity {
         btnsubmit.setText("Update");
         edtnomor.setText(nomor);
         edtnomor.setFocusable(false);
-        edtnama.setText(data.getNama());
-        edttanggal.setText(data.getTgl());
-        edtjenkel.setText(data.getJenkel());
-        edtalamat.setText(data.getAlamat());
+        edtnama.setText(updated.getNama());
+        edttanggal.setText(updated.getTgl());
+        edtjenkel.setText(updated.getJenkel());
+        edtalamat.setText(updated.getAlamat());
     }
     btnsubmit.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -56,7 +56,7 @@ public class InputdataActivity extends AppCompatActivity {
             DatabaseHelper db = new DatabaseHelper(context);
             Data data = new Data();
             String label = btnsubmit.getText().toString();
-            if (label.equals("SIMPAN")){
+            if (label.equals("Simpan")){
                 data.setNo(Integer.parseInt(edtnomor.getText().toString()));
                 data.setNama(edtnama.getText().toString());
                 data.setTgl(edttanggal.getText().toString());
