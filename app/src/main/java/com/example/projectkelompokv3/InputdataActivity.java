@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,8 +17,7 @@ public class InputdataActivity extends AppCompatActivity {
     Button btnsubmit;
     Context context;
     Data updated;
-    Integer nomor;
-    String aksi = "Submit";
+    String aksi,nomor = "Submit";
 
 
     @Override
@@ -26,12 +26,12 @@ public class InputdataActivity extends AppCompatActivity {
         setContentView(R.layout.activity_inputdata);
         context = this;
 
-        aksi = getIntent().getStringExtra("UPDATE");
+        aksi = getIntent().getStringExtra("UPDATE_ACTION");
         updated = getIntent().getParcelableExtra("UPDATE_INTENT");
         if(aksi == null){
             aksi = "Submit";
         }else{
-            nomor = updated.getNo();
+            nomor = String.valueOf(updated.getNo());
         }
 
         edtnomor = findViewById(R.id.edtnomor);
@@ -49,6 +49,8 @@ public class InputdataActivity extends AppCompatActivity {
         edttanggal.setText(updated.getTgl());
         edtjenkel.setText(updated.getJenkel());
         edtalamat.setText(updated.getAlamat());
+
+        Log.d("test",updated.getNama());
     }
     btnsubmit.setOnClickListener(new View.OnClickListener() {
         @Override
