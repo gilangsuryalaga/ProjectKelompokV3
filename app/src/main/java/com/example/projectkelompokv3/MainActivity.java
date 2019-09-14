@@ -25,5 +25,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void informasi(View view) {
+        Intent i = new Intent(MainActivity.this,InfoActivity.class);
+        startActivity(i);
     }
 }
